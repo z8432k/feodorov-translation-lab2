@@ -34,7 +34,7 @@ begin:
 
 addition:
   addition ADD multiply     { $$ = addition_append($1, $3, $2); }
-  | addition SUB multiply     { $$ = addition_append($1, $3, $2); }
+  | addition SUB multiply   { $$ = addition_append($1, $3, $2); }
   | multiply                { $$ = new_addition($1); }
 ;
 
