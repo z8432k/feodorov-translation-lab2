@@ -16,7 +16,7 @@ void yyerror(char **translate_result, const char* s);
   Multiply mul;
   Addition summ;
 }
-%token <image> WS K_CHAR M_CHAR N_CHAR MUL ADD
+%token <image> WS K_CHAR M_CHAR N_CHAR MUL ADD SUB
 
 %start begin
 
@@ -33,7 +33,8 @@ begin:
 ;
 
 addition:
-  addition ADD multiply     { $$ = addition_append($1, $3); }
+  addition ADD multiply     { $$ = addition_append($1, $3, $2); }
+  | addition SUB multiply     { $$ = addition_append($1, $3, $2); }
   | multiply                { $$ = new_addition($1); }
 ;
 

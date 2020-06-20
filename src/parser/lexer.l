@@ -15,6 +15,7 @@ M_CHAR          [m]
 N_CHAR          [n]
 MUL             [*]
 ADD             [+]
+SUB             [-]
 
 %%
 {WS}            {}
@@ -52,5 +53,12 @@ ADD             [+]
                 yylval.image = yytext[0];
 
                 return ADD;
+}
+
+{SUB} {
+                printf("\tFound '-'\n");
+                yylval.image = yytext[0];
+
+                return SUB;
 }
 %%

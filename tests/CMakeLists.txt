@@ -21,7 +21,8 @@ list(APPEND _tests
         parser_test6
         parser_test7
         parser_test8
-        parser_test9)
+        parser_test9
+        parser_test10)
 
 foreach(_test IN LISTS _tests)
                 add_executable(${_test} ${_test}.c)
@@ -64,6 +65,8 @@ add_test(NAME test_fail_'n**'
         COMMAND $<TARGET_FILE:parser_test9>)
 set_tests_properties(test_fail_'n**' PROPERTIES WILL_FAIL true)
 
+add_test(NAME test_'n*m-k*m+n*m'
+        COMMAND $<TARGET_FILE:parser_test10>)
 
 enable_testing()
 
